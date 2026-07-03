@@ -1,9 +1,12 @@
 import { Logo } from "@/shared/ui/logo/Logo";
 import { Text } from "@/shared/ui/text/Text";
 
-export const AuthSidebar = () => {
+type Props = { className?: string };
+export const AuthSidebar = ({ className }: Props) => {
   return (
-    <div className="bg-brand-dark p-7.5 text-white h-screen flex flex-col justify-between">
+    <div
+      className={`bg-brand-dark p-7.5 text-white h-screen flex flex-col justify-between ${className ?? ""}`}
+    >
       <Logo variant="light" />
       <div>
         <Text variant="title" className="mb-3 mt-3">

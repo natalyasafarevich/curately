@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { Text } from "../text/Text";
 
 type Props = {
