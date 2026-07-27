@@ -1,0 +1,27 @@
+@theme {
+  /* main */
+  --color-emerald-deep: #0f4c3a;
+
+  /* Accent */
+  --color-terracotta: #c97b4a;
+
+  --color-sand: #f3e9de;
+  --color-sand-text: #8a5636;
+
+  /* Background */
+  --color-bg: #faf7f2;
+
+  /* Text */
+  --color-text-primary: #1a2e28;
+  --color-text-secondary: #555555;
+  --color-text-muted: #7a877e;
+
+  /* Borders */
+  --color-border: #ece7dc;
+
+  /* Phase */
+  --color-phase-menstrual: #7a3b3b;
+  --color-phase-follicular: #4a7a5c;
+  --color-phase-ovulatory: #c97b4a;
+  --color-phase-luteal: #5c4a6b;
+}
