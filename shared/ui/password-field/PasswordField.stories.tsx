@@ -1,22 +1,22 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import { DividerWithText } from "./divider-with-text";
+import { PasswordField } from "./PasswordField";
 
 const meta = {
-  title: "Shared/UI/DividerWithText",
-  component: DividerWithText,
+  title: "Shared/UI/PasswordField",
+  component: PasswordField,
   parameters: { layout: "centered" },
   tags: ["autodocs"],
-  args: { children: "or" },
-} satisfies Meta<typeof DividerWithText>;
+} satisfies Meta<typeof PasswordField>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  args: { label: "Password", placeholder: "Create a password" },
   render: (args) => (
     <div className="w-72">
-      <DividerWithText {...args} />
+      <PasswordField {...args} />
     </div>
   ),
 };

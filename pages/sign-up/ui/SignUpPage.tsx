@@ -1,6 +1,6 @@
 import { SignUpForm } from "@/features/sign-up";
-import { Logo } from "@/shared/ui/logo/logo";
-import { Notice } from "@/shared/ui/notice/notice";
+import { Logo } from "@/shared/ui/logo/Logo";
+import { Notice } from "@/shared/ui/notice/Notice";
 import { AuthHero } from "@/widgets/auth-hero";
 
 export const SignUpPage = () => {

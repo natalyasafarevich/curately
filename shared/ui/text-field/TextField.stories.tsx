@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import { TextField } from "./text-field";
+import { TextField } from "./TextField";
 
 const meta = {
   title: "Shared/UI/TextField",

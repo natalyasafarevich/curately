@@ -1,1 +1,1 @@
-export { AuthHero } from "./ui/auth-hero";
+export { AuthHero } from "./ui/AuthHero";

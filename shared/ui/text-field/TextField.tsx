@@ -1,6 +1,6 @@
 import type { InputHTMLAttributes, ReactNode } from "react";
 
-import { Input } from "@/shared/ui/input/input";
+import { Input } from "@/shared/ui/input/Input";
 
 type TextFieldProps = InputHTMLAttributes<HTMLInputElement> & {
   label: string;

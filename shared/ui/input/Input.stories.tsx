@@ -1,22 +1,22 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import { PasswordField } from "./password-field";
+import { Input } from "./Input";
 
 const meta = {
-  title: "Shared/UI/PasswordField",
-  component: PasswordField,
+  title: "Shared/UI/Input",
+  component: Input,
   parameters: { layout: "centered" },
   tags: ["autodocs"],
-} satisfies Meta<typeof PasswordField>;
+} satisfies Meta<typeof Input>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  args: { label: "Password", placeholder: "Create a password" },
+  args: { placeholder: "Your name" },
   render: (args) => (
     <div className="w-72">
-      <PasswordField {...args} />
+      <Input {...args} />
     </div>
   ),
 };

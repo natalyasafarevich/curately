@@ -2,11 +2,11 @@
 
 import { useState, type FormEvent } from "react";
 
-import { Button } from "@/shared/ui/button/button";
-import { Checkbox } from "@/shared/ui/checkbox/checkbox";
-import { DividerWithText } from "@/shared/ui/divider-with-text/divider-with-text";
-import { PasswordField } from "@/shared/ui/password-field/password-field";
-import { TextField } from "@/shared/ui/text-field/text-field";
+import { Button } from "@/shared/ui/button/Button";
+import { Checkbox } from "@/shared/ui/checkbox/Checkbox";
+import { DividerWithText } from "@/shared/ui/divider-with-text/DividerWithText";
+import { PasswordField } from "@/shared/ui/password-field/PasswordField";
+import { TextField } from "@/shared/ui/text-field/TextField";
 
 const GoogleIcon = () => (
   <svg width="18" height="18" viewBox="0 0 18 18">

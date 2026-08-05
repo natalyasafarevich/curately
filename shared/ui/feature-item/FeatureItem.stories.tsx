@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import { FeatureItem } from "./feature-item";
+import { FeatureItem } from "./FeatureItem";
 
 const meta = {
   title: "Shared/UI/FeatureItem",

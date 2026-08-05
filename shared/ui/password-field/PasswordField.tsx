@@ -3,7 +3,7 @@
 import { useState } from "react";
 import type { InputHTMLAttributes } from "react";
 
-import { TextField } from "@/shared/ui/text-field/text-field";
+import { TextField } from "@/shared/ui/text-field/TextField";
 
 type PasswordFieldProps = Omit<
   InputHTMLAttributes<HTMLInputElement>,

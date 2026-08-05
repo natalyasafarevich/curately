@@ -1,22 +1,22 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import { Input } from "./input";
+import { DividerWithText } from "./DividerWithText";
 
 const meta = {
-  title: "Shared/UI/Input",
-  component: Input,
+  title: "Shared/UI/DividerWithText",
+  component: DividerWithText,
   parameters: { layout: "centered" },
   tags: ["autodocs"],
-} satisfies Meta<typeof Input>;
+  args: { children: "or" },
+} satisfies Meta<typeof DividerWithText>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  args: { placeholder: "Your name" },
   render: (args) => (
     <div className="w-72">
-      <Input {...args} />
+      <DividerWithText {...args} />
     </div>
   ),
 };

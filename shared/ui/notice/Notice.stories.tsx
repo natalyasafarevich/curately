@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import { Notice } from "./notice";
+import { Notice } from "./Notice";
 
 const meta = {
   title: "Shared/UI/Notice",
