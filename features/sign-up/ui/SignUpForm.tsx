@@ -7,6 +7,10 @@ import { Checkbox } from "@/shared/ui/checkbox/Checkbox";
 import { DividerWithText } from "@/shared/ui/divider-with-text/DividerWithText";
 import { PasswordField } from "@/shared/ui/password-field/PasswordField";
 import { TextField } from "@/shared/ui/text-field/TextField";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { signUpScheme } from "@/shared/schemes/sign-up";
+import { useSignUpForm } from "@/shared/hooks/auth/useSignUpForm";
 
 const GoogleIcon = () => (
   <svg width="18" height="18" viewBox="0 0 18 18">
@@ -30,38 +34,30 @@ const GoogleIcon = () => (
 );
 
 export const SignUpForm = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [agreed, setAgreed] = useState(false);
+  const { handleSubmit, register, errors, value, onChange } = useSignUpForm();
+  console.log(errors);
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-  };
+  const [agreed, setAgreed] = useState(false);
 
   return (
     <>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4.5">
-        <TextField
-          label="Name"
-          placeholder="Your name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
+        <TextField label="Name" placeholder="Your name" {...register("name")} />
         <TextField
           label="Email"
-          type="email"
           placeholder="you@example.com"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          {...register("email")}
         />
         <PasswordField
           label="Password"
           placeholder="Create a password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          {...register("password")}
         />
-
+        <PasswordField
+          label="Password"
+          placeholder="Create a password"
+          {...register("confirmPassword")}
+        />
         <Button type="submit" className="mt-1.5">
           Sign Up
         </Button>
@@ -73,12 +69,13 @@ export const SignUpForm = () => {
         </Button>
 
         <Checkbox
-          checked={agreed}
-          onChange={(e) => setAgreed(e.target.checked)}
+          {...register("agree")}
+          onChange={onChange}
+          checked={value}
           className="mt-1"
           label={
             <>
-              I agree to the{" "}
+              I agree to the
               <a href="#" className="text-terracotta no-underline">
                 Terms of Service
               </a>{" "}

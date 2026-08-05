@@ -1,5 +1,32 @@
-<!-- BEGIN:nextjs-agent-rules -->
-# This is NOT the Next.js you know
+а
+# AGENTS.md
 
-This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` before writing any code. Heed deprecation notices.
+## Стек
+
+- Next.js (App Router)
+- TypeScript
+- Tailwind CSS
+- Storybook
+
+## Вёрстка
+
+Когда я присылаю файл (макет, скриншот, PDF) и прошу «сверстать»:
+
+1. Проанализируй все компоненты, которые есть на странице, и выдели те, которые можно переиспользовать.
+2. Для каждого переиспользуемого компонента создай папку:
+   `shared/ui/[название-компонента]/[название-компонента].tsx`
+   - название папки и файла — в нижнем регистре
+   - если название состоит из двух и более слов — через дефис (например, `product-card`)
+3. Рядом с компонентом создай стори:
+   `shared/ui/[название-компонента]/[название-компонента].stories.tsx`
+4. Для стилизации используй Tailwind CSS.
+5. Адаптивность — mobile-first, брейкпоинты: 375px / 768px / 1280px.
+6. После создания переиспользуемых компонентов собери страницу целиком, следуя FSD-архитектуре:
+   - `shared/` — переиспользуемые UI-компоненты, утилиты
+   - `entities/` — бизнес-сущности (карточка товара, профиль и т.д.)
+   - `features/` — пользовательские сценарии (добавить в корзину, фильтрация)
+   - `widgets/` — крупные составные блоки страницы (шапка, каталог)
+   - `pages/` — сборка страницы из widgets/features/entities
+   - `app/` — точки входа, роутинг, провайдеры
+
 <!-- END:nextjs-agent-rules -->
