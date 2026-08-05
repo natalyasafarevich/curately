@@ -3,6 +3,8 @@ import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { locales } from '@/i18n/request';
 
+import '../globals.css';
+
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
