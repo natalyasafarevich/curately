@@ -11,7 +11,7 @@ export const useSignUpForm = () => {
     formState: { errors, isValid },
   } = useForm({
     resolver: zodResolver(signUpScheme),
-    mode: "onSubmit",
+    mode: "onChange",
   });
 
   const {
@@ -30,5 +30,6 @@ export const useSignUpForm = () => {
     errors,
     value,
     onChange,
+    isValid,
   };
 };

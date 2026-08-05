@@ -10,6 +10,7 @@ type PasswordFieldProps = Omit<
   "type"
 > & {
   label: string;
+  error?: string;
 };
 
 const EyeOpenIcon = () => (
@@ -39,24 +40,31 @@ const EyeClosedIcon = () => (
   </svg>
 );
 
-export const PasswordField = ({ label, ...props }: PasswordFieldProps) => {
+export const PasswordField = ({
+  label,
+  error,
+  ...props
+}: PasswordFieldProps) => {
   const [visible, setVisible] = useState(false);
 
   return (
-    <TextField
-      label={label}
-      type={visible ? "text" : "password"}
-      endAdornment={
-        <button
-          type="button"
-          onClick={() => setVisible((v) => !v)}
-          aria-label={visible ? "Hide password" : "Show password"}
-          className="absolute right-3.5 flex items-center justify-center text-text-secondary"
-        >
-          {visible ? <EyeClosedIcon /> : <EyeOpenIcon />}
-        </button>
-      }
-      {...props}
-    />
+    <>
+      <TextField
+        label={label}
+        error={error}
+        type={visible ? "text" : "password"}
+        endAdornment={
+          <button
+            type="button"
+            onClick={() => setVisible((v) => !v)}
+            aria-label={visible ? "Hide password" : "Show password"}
+            className="absolute right-3.5 flex items-center justify-center text-text-secondary"
+          >
+            {visible ? <EyeClosedIcon /> : <EyeOpenIcon />}
+          </button>
+        }
+        {...props}
+      />
+    </>
   );
 };

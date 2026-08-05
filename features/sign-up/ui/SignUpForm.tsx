@@ -11,6 +11,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signUpScheme } from "@/shared/schemes/sign-up";
 import { useSignUpForm } from "@/shared/hooks/auth/useSignUpForm";
+import { ErrorMessage } from "@/shared/ui/error-message/ErrorMessage";
 
 const GoogleIcon = () => (
   <svg width="18" height="18" viewBox="0 0 18 18">
@@ -34,31 +35,38 @@ const GoogleIcon = () => (
 );
 
 export const SignUpForm = () => {
-  const { handleSubmit, register, errors, value, onChange } = useSignUpForm();
-  console.log(errors);
-
-  const [agreed, setAgreed] = useState(false);
+  const { handleSubmit, register, errors, value, onChange, isValid } =
+    useSignUpForm();
+  console.log(isValid);
 
   return (
     <>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4.5">
-        <TextField label="Name" placeholder="Your name" {...register("name")} />
+        <TextField
+          label="Name"
+          placeholder="Your name"
+          {...register("name")}
+          error={errors.name?.message}
+        />
         <TextField
           label="Email"
           placeholder="you@example.com"
           {...register("email")}
+          error={errors.email?.message}
         />
         <PasswordField
           label="Password"
           placeholder="Create a password"
           {...register("password")}
+          error={errors.password?.message}
         />
         <PasswordField
           label="Password"
           placeholder="Create a password"
           {...register("confirmPassword")}
+          error={errors.confirmPassword?.message}
         />
-        <Button type="submit" className="mt-1.5">
+        <Button type="submit" className="mt-1.5" disabled={!isValid}>
           Sign Up
         </Button>
 
@@ -80,9 +88,10 @@ export const SignUpForm = () => {
                 Terms of Service
               </a>{" "}
               and{" "}
-              <a href="#" className="text-terracotta no-underline">
+              <a href="#" className="text-terracotta no-underline ">
                 Privacy Policy
               </a>
+              <ErrorMessage error={errors.agree?.message ?? ""} />
             </>
           }
         />

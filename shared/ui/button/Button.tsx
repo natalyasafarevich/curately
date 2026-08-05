@@ -20,7 +20,7 @@ export const Button = ({
 }: ButtonProps) => {
   return (
     <button
-      className={`flex h-12.5 w-full items-center justify-center gap-2.5 rounded-xl text-base font-semibold transition-colors ${variantClasses[variant]} ${className ?? ""}`}
+      className={`flex h-12.5 w-full items-center justify-center gap-2.5 rounded-xl text-base font-semibold transition-colors disabled:opacity-50 disabled:hover:bg-terracotta ${variantClasses[variant]} ${className ?? ""}`}
       {...props}
     >
       {icon}
