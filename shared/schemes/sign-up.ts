@@ -8,6 +8,7 @@ export const signUpScheme = z
     password: password,
     confirmPassword: confirmPassword,
     agree: agree,
+    root: z.string().optional(),
   })
   .refine((data) => data.password === data.confirmPassword, {
     message: "Passwords do not match",
@@ -15,3 +16,4 @@ export const signUpScheme = z
   });
 
 export type FormSignUp = z.infer<typeof signUpScheme>;
+export type FormSignUpKeys = keyof FormSignUp;

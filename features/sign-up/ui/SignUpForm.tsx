@@ -37,8 +37,7 @@ const GoogleIcon = () => (
 export const SignUpForm = () => {
   const { handleSubmit, register, errors, value, onChange, isValid } =
     useSignUpForm();
-  console.log(isValid);
-
+  console.log(isValid, value, errors);
   return (
     <>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4.5">
@@ -65,17 +64,7 @@ export const SignUpForm = () => {
           placeholder="Create a password"
           {...register("confirmPassword")}
           error={errors.confirmPassword?.message}
-        />
-        <Button type="submit" className="mt-1.5" disabled={!isValid}>
-          Sign Up
-        </Button>
-
-        <DividerWithText>or</DividerWithText>
-
-        <Button type="button" variant="secondary" icon={<GoogleIcon />}>
-          Continue with Google
-        </Button>
-
+        />{" "}
         <Checkbox
           {...register("agree")}
           onChange={onChange}
@@ -95,6 +84,13 @@ export const SignUpForm = () => {
             </>
           }
         />
+        <Button type="submit" className="mt-1.5" disabled={!isValid}>
+          Sign Up
+        </Button>
+        <DividerWithText>or</DividerWithText>
+        <Button type="button" variant="secondary" icon={<GoogleIcon />}>
+          Continue with Google
+        </Button>
       </form>
 
       <p className="mt-5 text-center text-[13px] text-text-secondary">
