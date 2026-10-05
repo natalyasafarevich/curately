@@ -4,7 +4,12 @@ import { useController, useForm } from "react-hook-form";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { app } from "@/shared/lib/firebase/config";
 import { getFriendlyError } from "@/shared/lib/firebase/auth-errors";
+import { useUser } from "../user/useUser";
+import { FirebaseError } from "firebase/app";
+
 export const useSignUpForm = () => {
+  const { createUser } = useUser();
+
   const {
     register,
     handleSubmit,
@@ -13,7 +18,7 @@ export const useSignUpForm = () => {
     formState: { errors, isValid },
   } = useForm({
     resolver: zodResolver(signUpScheme),
-    mode: "onTouched",
+    mode: "onChange",
   });
 
   const {
@@ -25,20 +30,20 @@ export const useSignUpForm = () => {
   });
   const auth = getAuth(app);
 
-  const onSubmit = (data: FormSignUp) => {
-    console.log(data);
+  const onSubmit = async (data: FormSignUp) => {
     const { email, password, name } = data;
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed up
-        const user = userCredential.user;
-        console.log("User signed up:", user);
-        // ...
-      })
-      .catch((error) => {
+    try {
+      await createUserWithEmailAndPassword(auth, email, password);
+      createUser({
+        name,
+        username: "test",
+      });
+    } catch (error: unknown) {
+      if (error instanceof FirebaseError) {
         const { message, ref } = getFriendlyError(error.code);
         setError(ref, { message });
-      });
+      }
+    }
   };
 
   return {

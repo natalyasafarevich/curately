@@ -1,15 +1,10 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
-
 import { Button } from "@/shared/ui/button/Button";
 import { Checkbox } from "@/shared/ui/checkbox/Checkbox";
 import { DividerWithText } from "@/shared/ui/divider-with-text/DividerWithText";
 import { PasswordField } from "@/shared/ui/password-field/PasswordField";
 import { TextField } from "@/shared/ui/text-field/TextField";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { signUpScheme } from "@/shared/schemes/sign-up";
 import { useSignUpForm } from "@/shared/hooks/auth/useSignUpForm";
 import { ErrorMessage } from "@/shared/ui/error-message/ErrorMessage";
 
@@ -37,7 +32,7 @@ const GoogleIcon = () => (
 export const SignUpForm = () => {
   const { handleSubmit, register, errors, value, onChange, isValid } =
     useSignUpForm();
-  console.log(isValid, value, errors);
+
   return (
     <>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4.5">
