@@ -1,9 +1,9 @@
-import { NextIntlClientProvider } from 'next-intl';
-import { getMessages } from 'next-intl/server';
-import { notFound } from 'next/navigation';
-import { locales } from '@/i18n/request';
-
-import '../globals.css';
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages } from "next-intl/server";
+import { notFound } from "next/navigation";
+import { locales } from "@/i18n/request";
+import "../globals.css";
+import AuthProvider from "../providers/AuthProvider";
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -28,7 +28,7 @@ export default async function LocaleLayout({
     <html lang={locale}>
       <body>
         <NextIntlClientProvider messages={messages}>
-          {children}
+          <AuthProvider>{children}</AuthProvider>
         </NextIntlClientProvider>
       </body>
     </html>

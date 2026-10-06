@@ -4,12 +4,12 @@ import { useController, useForm } from "react-hook-form";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { app } from "@/shared/lib/firebase/config";
 import { getFriendlyError } from "@/shared/lib/firebase/auth-errors";
-import { useUser } from "../user/useUser";
+
 import { FirebaseError } from "firebase/app";
+import { useUserProfile } from "../user/useUserProfile";
 
 export const useSignUpForm = () => {
-  const { createUser } = useUser();
-
+  const { createProfile } = useUserProfile();
   const {
     register,
     handleSubmit,
@@ -34,10 +34,14 @@ export const useSignUpForm = () => {
     const { email, password, name } = data;
     try {
       await createUserWithEmailAndPassword(auth, email, password);
-      createUser({
-        name,
-        username: "test",
-      });
+
+      createProfile(
+        {
+          name,
+          username: "test",
+        },
+        auth.currentUser!.uid,
+      );
     } catch (error: unknown) {
       if (error instanceof FirebaseError) {
         const { message, ref } = getFriendlyError(error.code);

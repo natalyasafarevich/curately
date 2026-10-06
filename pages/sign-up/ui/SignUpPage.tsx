@@ -1,9 +1,12 @@
+
 import { SignUpForm } from "@/features/sign-up";
+import { useUserProfile } from '@/shared/hooks/user/useUserProfile'
 import { Logo } from "@/shared/ui/logo/Logo";
 import { Notice } from "@/shared/ui/notice/Notice";
 import { AuthHero } from "@/widgets/auth-hero";
 
 export const SignUpPage = () => {
+
   return (
     <div className="flex min-h-screen flex-col bg-bg md:flex-row">
       <div className="flex flex-1 flex-col px-6 py-8 md:px-10 md:py-10 xl:pr-10 xl:pl-16">
