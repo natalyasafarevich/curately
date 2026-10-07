@@ -6,6 +6,7 @@ type ErrorProps = {
 };
 export function getFriendlyError(code: string): ErrorProps {
   switch (code) {
+    case "username-already-in-use":  return { message: "This username is already registered", ref: "username" };
     case "auth/email-already-in-use":
       return { message: "This email is already registered", ref: "email" };
     case "auth/invalid-credential":
