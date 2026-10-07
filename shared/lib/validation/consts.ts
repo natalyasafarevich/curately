@@ -10,16 +10,14 @@ export const passwordValidation = {
   },
 } as const;
 
-export const nameValidation = {
+export const usernameValidation = {
   MIN_LENGTH: 6,
   MAX_LENGTH: 30,
-  REGEX: /^[a-zA-Z0-9_-]+$/,
+  REGEX: /^[a-z0-9_-]+$/,
   ERROR_MESSAGES: {
-    PATTERN: "Name must contain a-z A-Z 0-9 _ - ",
-    MISMATCH: "The passwords must match",
+    PATTERN: "Username can only contain lowercase letters, numbers, underscores, and hyphens",
   },
 } as const;
-
 export const emailValidation = {
   REGEX: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
   ERROR_MESSAGES: "Please enter a valid email address",

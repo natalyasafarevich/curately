@@ -31,14 +31,13 @@ export const useSignUpForm = () => {
   const auth = getAuth(app);
 
   const onSubmit = async (data: FormSignUp) => {
-    const { email, password, name } = data;
+    const { email, password, username } = data;
     try {
       await createUserWithEmailAndPassword(auth, email, password);
 
       createProfile(
         {
-          name,
-          username: "test",
+          username,
         },
         auth.currentUser!.uid,
       );

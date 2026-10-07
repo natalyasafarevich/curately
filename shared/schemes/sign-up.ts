@@ -1,9 +1,9 @@
 import z from "zod";
-import { name, email, password, agree, confirmPassword } from "./base";
+import { username, email, password, agree, confirmPassword } from "./base";
 
 export const signUpScheme = z
   .object({
-    name: name,
+    username: username,
     email: email,
     password: password,
     confirmPassword: confirmPassword,

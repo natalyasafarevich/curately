@@ -8,7 +8,7 @@ export default function AuthProvider({ children }: { children: ReactNode }) {
   const { loading, uid } = useUserProfile();
 
   const pathname = usePathname();
-
+console.log("AuthProvider", { loading, uid, pathname });
   if (loading) return <p>Loading...</p>;
   return (
     <>

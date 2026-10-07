@@ -1,23 +1,23 @@
 import z from "zod";
 import {
   emailValidation,
-  nameValidation,
+  usernameValidation,
   passwordValidation,
 } from "../lib/validation/consts";
 
-export const name = z
+export const username = z
   .string()
-  .min(nameValidation.MIN_LENGTH, {
-    message: `Name must be at least ${nameValidation.MIN_LENGTH} characters long`,
+  .min(usernameValidation.MIN_LENGTH, {
+    message: `Username must be at least ${usernameValidation.MIN_LENGTH} characters long`,
   })
-  .max(nameValidation.MAX_LENGTH, {
-    message: `Name must be at most ${nameValidation.MAX_LENGTH} characters long`,
+  .max(usernameValidation.MAX_LENGTH, {
+    message: `Username must be at most ${usernameValidation.MAX_LENGTH} characters long`,
   })
-  .regex(nameValidation.REGEX, {
-    message: nameValidation.ERROR_MESSAGES.PATTERN,
+  .regex(usernameValidation.REGEX, {
+    message: usernameValidation.ERROR_MESSAGES.PATTERN,
   })
+  .toLowerCase()
   .default("");
-
 export const email = z
   .string()
   .email({

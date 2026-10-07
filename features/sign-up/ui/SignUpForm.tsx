@@ -37,10 +37,10 @@ export const SignUpForm = () => {
     <>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4.5">
         <TextField
-          label="Name"
-          placeholder="Your name"
-          {...register("name")}
-          error={errors.name?.message}
+          label="Username"
+          placeholder="Create a username"
+          {...register("username")}
+          error={errors.username?.message}
         />
         <TextField
           label="Email"
